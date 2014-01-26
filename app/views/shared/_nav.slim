@@ -1,0 +1,10 @@
+- if user_signed_in?
+
+  = link_to "your messages", user_messages_path, class: 'button'
+  = link_to "new message", new_user_message_path, class: 'button'
+  = link_to "sent messages", sent_messages_path, class: 'button'
+  = link_to "users", users_path, class: 'button'
+
+- else
+
+  h1 not logged in
