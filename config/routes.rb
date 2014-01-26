@@ -1,5 +1,9 @@
 Byro::Application.routes.draw do
+  devise_for :users
+
   resources :user_messages
+
+  root :to => 'user_messages#index'
 
 
   # The priority is based upon order of creation:
