@@ -2,7 +2,8 @@ class UserMessagesController < ApplicationController
   # GET /user_messages
   # GET /user_messages.json
   def index
-    @user_messages = UserMessage.all
+    # user = User.find(1)
+    @user_messages = User.find(current_user.id).user_messages
 
     respond_to do |format|
       format.html # index.html.erb
