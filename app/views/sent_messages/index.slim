@@ -1,0 +1,23 @@
+/ = raise "#{current_user.id}"
+
+h1 Your sent Messages
+table
+  tr
+    th From user
+    th To user
+    th Subject
+    th Message
+    th
+    th
+    th
+  - @sent_messages.each do |user_message|
+    tr
+      td= user_message.from_user_id
+      td= user_message.to_user_id
+      td= user_message.subject
+      td= user_message.message
+      td= link_to 'Show', user_message
+      td= link_to 'Edit', edit_user_message_path(user_message)
+      / td= link_to 'Destroy', user_message, method: :delete, data:   confirm: 'Are you sure?' 
+br/
+= link_to 'New User message', new_user_message_path

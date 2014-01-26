@@ -2,8 +2,7 @@
 
 <table>
   <tr>
-    <th>From user</th>
-    <th>To user</th>
+    <th>From</th>
     <th>Subject</th>
     <th>Message</th>
     <th></th>
@@ -13,8 +12,7 @@
 
 <% @user_messages.each do |user_message| %>
   <tr>
-    <td><%= user_message.from_user_id %></td>
-    <td><%= user_message.to_user_id %></td>
+    <td><%= User.find(user_message.to_user_id).handle %></td>
     <td><%= user_message.subject %></td>
     <td><%= user_message.message %></td>
     <td><%= link_to 'Show', user_message %></td>

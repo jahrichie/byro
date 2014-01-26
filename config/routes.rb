@@ -1,8 +1,13 @@
 Byro::Application.routes.draw do
   devise_for :users
+  resources :users
 
   resources :user_messages
 
+  resources :sent_messages
+
+  resources :users
+  
   root :to => 'user_messages#index'
 
 

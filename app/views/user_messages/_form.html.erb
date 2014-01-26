@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :from_user_id %><br />
-    <%= f.number_field :from_user_id %>
+    
+    <%= f.hidden_field :from_user_id, value: current_user.id  %>
   </div>
   <div class="field">
     <%= f.label :to_user_id %><br />
@@ -27,7 +27,9 @@
     <%= f.label :message %><br />
     <%= f.text_area :message %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'button'  %>
   </div>
+
 <% end %>

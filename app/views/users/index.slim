@@ -1,0 +1,10 @@
+.row
+  h1 Users
+  table
+    tr
+      th Handle
+      th Email
+    - @users.each do |user|
+      tr
+        td = user.handle
+        td = user.email
