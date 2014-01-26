@@ -1,10 +1,11 @@
-<h1>Listing user_messages</h1>
+<h1>Your Mesages</h1>
 
 <table>
   <tr>
     <th>From</th>
     <th>Subject</th>
     <th>Message</th>
+    <th>READ</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +13,10 @@
 
 <% @user_messages.each do |user_message| %>
   <tr>
-    <td><%= User.find(user_message.to_user_id).handle %></td>
+    <td><%= handle_lookup(user_message.to_user_id) %></td>
     <td><%= user_message.subject %></td>
     <td><%= user_message.message %></td>
+    <td><%= read_or_unread(user_message.read)   %></td>
     <td><%= link_to 'Show', user_message %></td>
     <td><%= link_to 'Edit', edit_user_message_path(user_message) %></td>
     <td><%= link_to 'Destroy', user_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New User message', new_user_message_path %>
+<%= link_to 'New User message', new_user_message_path, class: 'button' %>

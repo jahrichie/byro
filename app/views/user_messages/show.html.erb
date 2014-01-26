@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<p>
+  <b>Read:</b>
+  <%= @user_message.read %>
+</p>
+
+
 <p>
   <b>From user:</b>
   <%= @user_message.from_user_id %>
@@ -19,6 +27,7 @@
   <b>Message:</b>
   <%= @user_message.message %>
 </p>
+
 
 
 <%= link_to 'Edit', edit_user_message_path(@user_message) %> |

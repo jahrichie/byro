@@ -3,7 +3,7 @@ class UserMessagesController < ApplicationController
   # GET /user_messages.json
   def index
     # user = User.find(1)
-    @user_messages = User.find(current_user.id).user_messages
+    @user_messages = User.find(current_user.id).user_messages.order("read asc, created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,12 @@ class UserMessagesController < ApplicationController
   # GET /user_messages/1.json
   def show
     @user_message = UserMessage.find(params[:id])
+
+    # raise " #{@user_message.inspect}"
+
+    if @user_message.read == false && @user_message.to_user_id == current_user.id
+      @user_message.update_attribute(:read, true) 
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +51,7 @@ class UserMessagesController < ApplicationController
 
     respond_to do |format|
       if @user_message.save
-        format.html { redirect_to @user_message, notice: 'User message was successfully created.' }
+        format.html { redirect_to user_messages_path }
         format.json { render json: @user_message, status: :created, location: @user_message }
       else
         format.html { render action: "new" }

@@ -1,10 +1,11 @@
 - if user_signed_in?
 
-  = link_to "your messages", user_messages_path, class: 'button'
+  = link_to "your messages #{unread_count(current_user.id)}", user_messages_path, class: 'button'
   = link_to "new message", new_user_message_path, class: 'button'
   = link_to "sent messages", sent_messages_path, class: 'button'
   = link_to "users", users_path, class: 'button'
+  = link_to "sign_out  #{current_user.handle}",  destroy_user_session_path, :method => :delete, class: 'button'
 
 - else
 
-  h1 not logged in
+  h1 you need to login to use this app.

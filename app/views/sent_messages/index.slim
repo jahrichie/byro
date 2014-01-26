@@ -3,7 +3,6 @@
 h1 Your sent Messages
 table
   tr
-    th From user
     th To user
     th Subject
     th Message
@@ -12,8 +11,7 @@ table
     th
   - @sent_messages.each do |user_message|
     tr
-      td= user_message.from_user_id
-      td= user_message.to_user_id
+      td= handle_lookup(user_message.to_user_id)
       td= user_message.subject
       td= user_message.message
       td= link_to 'Show', user_message

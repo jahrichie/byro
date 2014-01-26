@@ -4,7 +4,9 @@
     tr
       th Handle
       th Email
+      th Sent Messages
     - @users.each do |user|
       tr
         td = user.handle
         td = user.email
+        td = UserMessage.find_all_by_from_user_id(user).size
