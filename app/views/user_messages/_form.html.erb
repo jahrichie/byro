@@ -15,10 +15,12 @@
     
     <%= f.hidden_field :from_user_id, value: current_user.id  %>
   </div>
-  <div class="field">
-    <%= f.label :to_user_id %><br />
-    <%= f.number_field :to_user_id %>
-  </div>
+
+
+  
+   <%= collection_select(:user_message, :to_user_id, User.all, :id, :handle, prompt: true)   %>
+
+
   <div class="field">
     <%= f.label :subject %><br />
     <%= f.text_field :subject %>
