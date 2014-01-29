@@ -4,7 +4,7 @@ Byro::Application.routes.draw do
 
   resources :user_messages
 
-  resources :sent_messages
+  get '/sent_messages', to: 'user_messages#sent'
 
   resources :users
   

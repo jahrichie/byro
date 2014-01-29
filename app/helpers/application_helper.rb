@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def unread_count(user_id)
-    UserMessage.find_all_by_to_user_id(user_id).reject{|r| r.read == true}.size.to_s
+    UserMessage.unread_messages(user_id).size
   end
 
 end

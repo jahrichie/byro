@@ -1,6 +1,12 @@
 class UserMessagesController < ApplicationController
   # GET /user_messages
   # GET /user_messages.json
+
+  def sent
+    @sent_messages = UserMessage.sent_messages(current_user.id)
+  end
+
+
   def index
     # user = User.find(1)
     @user_messages = User.find(current_user.id).user_messages.order("read asc, created_at desc")
